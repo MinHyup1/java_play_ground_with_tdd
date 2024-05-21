@@ -9,18 +9,19 @@ public class StringCalculator {
 
     private final static String DEFAULT_SEPARATOR = "[,:]";
 
-    // default 구분자 쉼표(,) , 콜론(:)
-    // while 문을 돌며 구분자가 존재하는지 확인하고
 
     public int plusStringNumbersBySeparator(String value) {
-        // 패턴 컴파일
-        Pattern compiledPattern = Pattern.compile(DEFAULT_SEPARATOR);
 
-        // 입력 문자열에 패턴 매칭
-        Matcher matcher = compiledPattern.matcher(value);
+        // 커스텀 구분자 //[구분자]\n -> [구분자]
+        final Matcher customMatcher = Pattern.compile("//(.)\n(.*)").matcher(value);
+        if(customMatcher.find()) {
+            return pushIntegerList(splitIntegerByDefaultSeparator(customMatcher.group(2),customMatcher.group(1)));
+        }
 
-        if(matcher.find()) {
-            return pushIntegerList(splitIntegerByDefaultSeparator(value));
+        // 기본 구분자 -> 쉼표(,) , 콜론(:)
+        final Matcher defalutMatcher = Pattern.compile(DEFAULT_SEPARATOR).matcher(value);
+        if(defalutMatcher.find()) {
+            return pushIntegerList(splitIntegerByDefaultSeparator(value,DEFAULT_SEPARATOR));
         }
 
         throw new RuntimeException();
@@ -33,9 +34,9 @@ public class StringCalculator {
         }
         return result;
     }
-    private List<Integer> splitIntegerByDefaultSeparator(String value) {
+    private List<Integer> splitIntegerByDefaultSeparator(String value, String separator) {
         List<Integer> result = new ArrayList<>();
-        for (String s : value.split(DEFAULT_SEPARATOR)) {
+        for (String s : value.split(separator)) {
             result.add(Integer.parseInt(s));
         }
         return result;

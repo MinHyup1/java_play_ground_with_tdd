@@ -20,4 +20,13 @@ public class StringCalculatorTest {
         int result2 = stringCalculator.plusStringNumbersBySeparator(value);
         assertThat(result2).isEqualTo(6);
     }
+
+    @Test
+    void 문자열을_선택한_구분자_기준으로_분리_한_숫자를_모두_더한다 () {
+        //구분자 : “//;\n" -> ";"
+        String value = "//;\n1;2;3";
+        StringCalculator stringCalculator = new StringCalculator();
+        int result = stringCalculator.plusStringNumbersBySeparator(value);
+        assertThat(result).isEqualTo(6);
+    }
 }
