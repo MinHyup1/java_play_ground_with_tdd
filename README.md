@@ -14,4 +14,4 @@
 
 # 브랜치 명 규칙
 - 브렌치 명 규칙 : [이름]/[before/after]_study/[과제명]
-ex) kmh/before_study/racingcar
+- ex) kmh/before_study/racingcar
