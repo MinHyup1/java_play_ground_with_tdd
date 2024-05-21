@@ -16,7 +16,6 @@ public class StringCalculator {
 
     private int pushIntegerList(List<Integer> integers) {
         int result = 0;
-
         for (Integer number : integers) {
             result += number;
         }
@@ -25,11 +24,8 @@ public class StringCalculator {
 
     private List<Integer> splitIntegerBySeparator(String value) {
         List<Integer> result = new ArrayList<>();
-
-        if(value.contains(",|:")){
-            for (String s : value.split(",")) {
-                result.add(Integer.parseInt(s));
-            }
+        for (String s : value.split("[,:]")) {
+            result.add(Integer.parseInt(s));
         }
         return result;
     }
