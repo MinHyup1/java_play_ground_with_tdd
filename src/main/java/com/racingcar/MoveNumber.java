@@ -8,7 +8,6 @@ public class MoveNumber {
     private static final int MINIMUM_MOVABLE_VALUE = 4;
 
     public MoveNumber(int number) {
-        Objects.requireNonNull(number);
         if (number < 0 || number > 9) {
             throw new IllegalArgumentException("유효하지 않은 값. 0~9값 입력");
         }
