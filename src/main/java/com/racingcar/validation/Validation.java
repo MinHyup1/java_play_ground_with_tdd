@@ -2,10 +2,13 @@ package com.racingcar.validation;
 
 public class Validation {
 
-    public boolean carNameValidation(String carName) {
+    public void carNameValidation(String carName) {
         if(carName.isEmpty()) {
-            return false;
+            throw new RuntimeException("carName is not Empty");
         }
-        return carName.length() <= 5;
+
+        if(carName.length() > 5) {
+            throw new RuntimeException("carName length is not great than 5");
+        }
     }
 }
