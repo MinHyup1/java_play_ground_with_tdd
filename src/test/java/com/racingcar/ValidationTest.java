@@ -33,11 +33,4 @@ public class ValidationTest {
         // Then
         assertThat(thrown).isInstanceOf(RuntimeException.class);
     }
-
-//    @Test
-//    void 자동차의_이름은_중복될_수_없다 () {
-//        String carName = "JAMES";
-//        Validation validation = new Validation();
-//        assertThat(validation.carNameValidation(carName)).isTrue();
-//    }
 }

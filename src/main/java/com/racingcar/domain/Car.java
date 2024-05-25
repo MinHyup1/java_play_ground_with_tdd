@@ -15,6 +15,10 @@ public class Car {
         return this.location;
     }
 
+    public String getCarName() {
+        return this.carName;
+    }
+
     public void moveForward() {
         this.location += create4to9RandomNumber();
     }
