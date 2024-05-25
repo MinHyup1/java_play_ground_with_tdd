@@ -17,6 +17,12 @@ public class Cars {
         }
     }
 
+    public void allMoveForward() {
+        for (Car car : carList) {
+            car.moveForward();
+        }
+    }
+
     public List<Car> getCarList() {
         return carList;
     }
