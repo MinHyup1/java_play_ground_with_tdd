@@ -17,7 +17,7 @@ public class PointTest {
         @Test
         void not_full_score_point_test() {
             Point point = new Point();
-            MovableNumber notMovableNumber = new MovableNumber(3);
+            int notMovableNumber = 3;
 
             point.add(notMovableNumber);
             point.add(notMovableNumber);
@@ -32,7 +32,7 @@ public class PointTest {
         @Test
         void full_score_point_test() {
             Point point = new Point();
-            MovableNumber movableNumber = new MovableNumber(4);
+            int movableNumber = 4;
 
             point.add(movableNumber);
             point.add(movableNumber);
@@ -43,20 +43,11 @@ public class PointTest {
             assertThat(point.isFullScore()).isTrue();
         }
 
-        @DisplayName("add()에 null을 입력하면 NPE를 발생시킨다.")
-        @Test
-        void throw_NPE_when_getting_null_argument() {
-            Point point = new Point();
-
-            assertThatThrownBy(() -> point.add(null))
-                .isInstanceOf(NullPointerException.class);
-        }
-
         @DisplayName("점수가 만점일 때 add를 호출하면 IllegalStateException을 발생시킨다.")
         @Test
         void throw_IllegalStateException_when_calling_add_method_with_full_score() {
             Point point = new Point();
-            MovableNumber movableNumber = new MovableNumber(4);
+            int movableNumber = 4;
             point.add(movableNumber);
             point.add(movableNumber);
             point.add(movableNumber);

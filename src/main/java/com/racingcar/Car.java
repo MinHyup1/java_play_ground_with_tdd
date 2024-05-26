@@ -11,8 +11,7 @@ public class Car {
     }
 
     public void move(int randomNumber) {
-        MovableNumber movableNumber = new MovableNumber(randomNumber);
-        point.add(movableNumber);
+        point.add(randomNumber);
     }
 
     public boolean isMaxPoint() {
