@@ -14,14 +14,14 @@ public class MoveForwardNumberTest {
     @ParameterizedTest
     @ValueSource(ints = {Integer.MIN_VALUE, -1, 10, Integer.MAX_VALUE})
     void constructor_throw_illegal_args_exception(int invalidNumber) {
-        Assertions.assertThatThrownBy(() -> new MoveNumber(invalidNumber));
+        Assertions.assertThatThrownBy(() -> new MovableNumber(invalidNumber));
     }
 
     @DisplayName("3 이하의 값을 입력 받으면 전진 불가능하다고 판단한다.")
     @ParameterizedTest
     @ValueSource(ints = {0, 1, 2, 3})
     void isMovable_false(int notMovableNumber) {
-        MoveNumber moveNumber = new MoveNumber(notMovableNumber);
+        MovableNumber moveNumber = new MovableNumber(notMovableNumber);
         assertThat(moveNumber.isMovable()).isFalse();
     }
 
@@ -29,7 +29,7 @@ public class MoveForwardNumberTest {
     @ParameterizedTest
     @ValueSource(ints = {4, 5, 6, 7, 8, 9})
     void isMovable_true(int movableNumber) {
-        MoveNumber moveNumber = new MoveNumber(movableNumber);
+        MovableNumber moveNumber = new MovableNumber(movableNumber);
         assertThat(moveNumber.isMovable()).isTrue();
     }
 }
