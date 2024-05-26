@@ -18,4 +18,8 @@ public class CarName {
             throw new IllegalArgumentException("유효하지 않은 이름입니다. 1~5글자의 문자열 입력.");
         }
     }
+
+    public String getName() {
+        return name;
+    }
 }

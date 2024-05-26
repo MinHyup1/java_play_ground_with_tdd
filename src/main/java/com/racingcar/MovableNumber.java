@@ -1,5 +1,7 @@
 package com.racingcar;
 
+import java.util.function.Supplier;
+
 public class MovableNumber {
 
     private final int number;

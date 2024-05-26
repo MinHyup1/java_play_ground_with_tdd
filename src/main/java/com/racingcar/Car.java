@@ -17,4 +17,12 @@ public class Car {
     public boolean isMaxPoint() {
         return point.isFullScore();
     }
+
+    public CarName getName() {
+        return name;
+    }
+
+    public Point getPoint() {
+        return point;
+    }
 }

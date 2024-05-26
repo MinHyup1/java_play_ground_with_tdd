@@ -19,4 +19,8 @@ public class Point {
     public boolean isFullScore() {
         return point >= FULL_SCORE;
     }
+
+    public int getPoint() {
+        return point;
+    }
 }
