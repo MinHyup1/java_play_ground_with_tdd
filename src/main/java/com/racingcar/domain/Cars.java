@@ -21,9 +21,9 @@ public class Cars {
     }
 
     public void allMoveForward() {
-        for (Car car : carList) {
-            car.moveForward();
-        }
+//        for (Car car : carList) {
+//            car.moveOrStopByRandomNumber();
+//        }
     }
 
     public List<Car> getCarList() {
@@ -33,22 +33,22 @@ public class Cars {
     public List<Car> getWinner() {
         List<Car> winners = new ArrayList<>();
         // 점수를 기준으로 내림차순 정렬
-        this.carList.sort(Comparator.comparingInt(Car::getLocation).reversed());
-
-        // 등수를 매기기 위한 변수
-        int rank = 1;
-        int prevScore = -1;
-
-        for (int i = 0; i < carList.size(); i++) {
-            Car car = carList.get(i);
-            if (car.getLocation() != prevScore) {
-                rank = i + 1; // 현재 인덱스 + 1로 등수 설정
-            }
-            if (rank == 1) {
-                winners.add(car);
-            }
-            prevScore = car.getLocation();
-        }
+//        this.carList.sort(Comparator.comparingInt(Car::getLocation).reversed());
+//
+//        // 등수를 매기기 위한 변수
+//        int rank = 1;
+//        int prevScore = -1;
+//
+//        for (int i = 0; i < carList.size(); i++) {
+//            Car car = carList.get(i);
+//            if (car.getLocation() != prevScore) {
+//                rank = i + 1; // 현재 인덱스 + 1로 등수 설정
+//            }
+//            if (rank == 1) {
+//                winners.add(car);
+//            }
+//            prevScore = car.getLocation();
+//        }
         return winners;
     }
 }

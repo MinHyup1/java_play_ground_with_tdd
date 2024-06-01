@@ -5,38 +5,39 @@ import java.util.Random;
 
 public class Car {
     private final String carName;
-    private int location;
+    private Location location;
 
     public Car(String carName) {
         this.carName = carName;
+        this.location = new Location();
     }
 
-    public int getLocation() {
-        return this.location;
+    public Car(String carName, Location location) {
+        this.carName = carName;
+        this.location = location;
     }
 
-    public String getCarName() {
-        return this.carName;
-    }
-
-    public void moveForward() {
-        this.location += create4to9RandomNumber();
-    }
-
-    private int create4to9RandomNumber() {
+    private int getRandomNumber() {
         Random random = new Random();
-        return random.nextInt(6) + 4;
+        return random.nextInt(9);
+    }
+
+    //for test
+    public void moveOrStopByRandomNumber(int number) {
+        if(number >= 4) {
+            this.location.advanceOneStep();
+        }
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Car car)) return false;
-        return Objects.equals(carName, car.carName);
+        return Objects.equals(carName, car.carName) && Objects.equals(location, car.location);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(carName);
+        return Objects.hash(carName, location);
     }
 }
