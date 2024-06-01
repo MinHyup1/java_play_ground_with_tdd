@@ -1,21 +1,21 @@
 package com.racingcar.domain;
 
-import com.racingcar.validation.Validation;
+import com.racingcar.domain.car.Car;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Cars {
 
     private final List<Car> carList = new ArrayList<Car>();
     public Cars(String carNames) {
-        Validation validation = new Validation();
-        
         //자동차 명 중복 제거
         Set<String> collect = Arrays.stream(carNames.split(",")).collect(Collectors.toSet());
 
         for (String carName : collect) {
-            validation.carNameValidation(carName);
             this.carList.add(new Car(carName));
         }
     }

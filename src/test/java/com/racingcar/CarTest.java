@@ -1,8 +1,8 @@
 package com.racingcar;
 
-import com.racingcar.domain.Car;
+import com.racingcar.domain.car.Car;
 import com.racingcar.domain.Cars;
-import com.racingcar.domain.Location;
+import com.racingcar.domain.car.Location;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

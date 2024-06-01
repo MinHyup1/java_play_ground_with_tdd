@@ -1,10 +1,5 @@
 package com.racingcar.ui;
 
-import com.racingcar.domain.Car;
-import com.racingcar.domain.Cars;
-
-import java.util.List;
-
 public class ResultView {
 //    public void printResults(Cars cars, int times) {
 //        printEmptyLine();

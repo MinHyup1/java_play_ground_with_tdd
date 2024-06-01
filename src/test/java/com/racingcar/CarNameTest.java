@@ -1,20 +1,18 @@
 package com.racingcar;
 
-import com.racingcar.validation.Validation;
+import com.racingcar.domain.car.Car;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.ThrowableAssert.catchThrowable;
 
-public class ValidationTest {
+public class CarNameTest {
 
     @Test
     void 자동차의_이름은_5자를_초과할_수_없다 () {
-        String carName = "JAMES";
-        Validation validation = new Validation();
         // When
         Throwable thrown = catchThrowable(() -> {
-            validation.carNameValidation(carName);
+            new Car("JAMSE");
         });
 
         // Then
@@ -23,11 +21,9 @@ public class ValidationTest {
 
     @Test
     void 자동차의_이름은_5자를_초과하면_예외가_발생해야_한다 () {
-        String carName = "James Francis Cameron";
-        Validation validation = new Validation();
         // When
         Throwable thrown = catchThrowable(() -> {
-            validation.carNameValidation(carName);
+            new Car("James Francis Cameron");
         });
 
         // Then
