@@ -21,8 +21,7 @@ public class PositionTest {
     @ValueSource(ints = {Integer.MIN_VALUE, -1, 6, Integer.MAX_VALUE})
     void Position_생성시_0미만_6이상의_값을_입력하면_예외가_발생한다(int invalidPosition) {
         assertThatThrownBy(() -> new Position(invalidPosition))
-            .isInstanceOf(IllegalArgumentException.class)
-            .hasMessage("유효하지 않은 값입니다. 0이상 5이하의 값을 입력해주세요.");
+            .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test

@@ -13,7 +13,8 @@ public class Position {
 
     public Position(int position) {
         if (position < MIN_POSITION || position > MAX_POSITION) {
-            throw new IllegalArgumentException("유효하지 않은 값입니다. 0이상 5이하의 값을 입력해주세요.");
+            String message = String.format("유효하지 않은 값입니다. %d이상 %d이하의 값을 입력해주세요.", MIN_POSITION, MAX_POSITION);
+            throw new IllegalArgumentException(message);
         }
 
         this.position = position;
