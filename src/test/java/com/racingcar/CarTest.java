@@ -1,6 +1,5 @@
 package com.racingcar;
 
-import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.assertj.core.api.Assertions;
@@ -26,6 +25,18 @@ public class CarTest {
         Position position = new Position(1);
 
         assertThat(currentPosition).isNotEqualTo(position);
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {4, 9})
+    void 자동차는_랜덤값이_4이상_9이하일_때_이동한다(int movableNumber) {
+        Car car = new Car("자동차1", 0);
+        car.move(movableNumber);
+        Position currentPosition = car.getPosition();
+
+        Position position = new Position(1);
+
+        assertThat(currentPosition).isEqualTo(position);
     }
 
     @Test
