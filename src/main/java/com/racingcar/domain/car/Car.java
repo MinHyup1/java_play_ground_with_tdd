@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Car {
     private final CarName name;
-    private Location location;
+    private final Location location;
 
     public Car(String carName) {
         this.name = new CarName(carName);
