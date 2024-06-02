@@ -31,6 +31,17 @@ public class CarTest {
 
     @Test
     @DisplayName("우승한 자동차를 선정할 수 있다.")
-    void 자동차_일급컬랙션_객체에있는_자동차들을_이동시킨_후_우승한_자동차를_가려낼_수_있다() {
+    void 자동차_일급컬랙션_안에서_우승한_자동차를_가려낼_수_있다() {
+        Car one = new Car("one");
+        one.moveOrStopByRandomNumber(1);
+        Car two = new Car("two");
+        two.moveOrStopByRandomNumber(1);
+        Car three = new Car("three");
+        three.moveOrStopByRandomNumber(4);
+
+        Cars cars = new Cars(List.of(one, two, three));
+        List<Car> winners = cars.getWinner();
+
+        assertThat(winners).containsExactly(three);
     }
 }

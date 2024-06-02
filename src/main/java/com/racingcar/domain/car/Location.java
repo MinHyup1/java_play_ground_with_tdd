@@ -9,7 +9,6 @@ public class Location {
         this.location = 0;
     }
 
-    //for test
     public Location(int location) {
         this.location = location;
     }
@@ -28,5 +27,9 @@ public class Location {
     @Override
     public int hashCode() {
         return Objects.hash(location);
+    }
+
+    public Location returnLageLocation(Location location) {
+        return new Location(Math.max(this.location, location.location));
     }
 }

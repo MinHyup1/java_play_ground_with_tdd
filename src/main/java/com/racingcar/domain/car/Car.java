@@ -34,4 +34,12 @@ public class Car {
     public int hashCode() {
         return Objects.hash(name, location);
     }
+
+    public Location returnLageLocationAfterComparison(Car car) {
+        return this.location.returnLageLocation(car.location);
+    }
+
+    public boolean isMaxLocation(Location maxLocation) {
+        return this.location.equals(maxLocation);
+    }
 }
