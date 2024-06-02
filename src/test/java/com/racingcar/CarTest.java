@@ -3,10 +3,13 @@ package com.racingcar;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.DisplayNameGeneration;
+import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+@DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 public class CarTest {
 
     @Test
@@ -17,7 +20,7 @@ public class CarTest {
 
     @ParameterizedTest
     @ValueSource(ints = {Integer.MIN_VALUE, 0, 1, 2, 3})
-    void 자동차는_랜덤값이_0이상_3이하일_때_이동하지_않는다(int notMoveNumber) {
+    void 자동차는_move_메서드_입력값이_0이상_3이하일_때_이동하지_않는다(int notMoveNumber) {
         Car car = new Car("자동차1", 0);
         car.move(notMoveNumber);
         Position currentPosition = car.getPosition();
@@ -29,7 +32,7 @@ public class CarTest {
 
     @ParameterizedTest
     @ValueSource(ints = {4, 9})
-    void 자동차는_랜덤값이_4이상_9이하일_때_이동한다(int movableNumber) {
+    void 자동차는_move_메서드_입력값이_4이상_9이하일_때_이동한다(int movableNumber) {
         Car car = new Car("자동차1", 0);
         car.move(movableNumber);
         Position currentPosition = car.getPosition();
@@ -40,7 +43,7 @@ public class CarTest {
     }
 
     @Test
-    void 자동차는_랜덤값이_10이상일_때_예외를_발생시킨다() {
+    void 자동차는_move_메서드_입력값이_10이상일_때_예외를_발생시킨다() {
         Car car = new Car("자동차1", 0);
         Assertions.assertThatThrownBy(() -> car.move(10))
             .isInstanceOf(IllegalArgumentException.class)
