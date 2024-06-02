@@ -12,11 +12,8 @@ public class Cars {
 
     public Cars(String carNames) {
         //자동차 명 중복 제거
-        Set<String> collect = Arrays.stream(carNames.split(",")).collect(Collectors.toSet());
-
-        for (String carName : collect) {
-            this.carList.add(new Car(carName));
-        }
+        Set<String> carNameSet = Arrays.stream(carNames.split(",")).collect(Collectors.toSet());
+        this.carList = carNameSet.stream().map(Car::new).collect(Collectors.toList());
     }
 
     public Cars(List<Car> carList) {
@@ -28,14 +25,13 @@ public class Cars {
     }
 
     public List<Car> getWinner() {
-        List<Car> winners = new ArrayList<>();
-        final Location maxLocation = getMaxLocation();
-        this.carList.forEach(car -> {
-            if(car.isMaxLocation(maxLocation)) {
-                winners.add(car);
-            }
-        });
-        return winners;
+        return getCarsByLocation(getMaxLocation());
+    }
+
+    private List<Car> getCarsByLocation(final Location maxLocation) {
+        return this.carList.stream()
+                .filter(car -> car.isEqualLocation(maxLocation))
+                .collect(Collectors.toList());
     }
 
     private Location getMaxLocation() {

@@ -39,7 +39,7 @@ public class Car {
         return this.location.returnLageLocation(car.location);
     }
 
-    public boolean isMaxLocation(Location maxLocation) {
+    public boolean isEqualLocation(Location maxLocation) {
         return this.location.equals(maxLocation);
     }
 }
