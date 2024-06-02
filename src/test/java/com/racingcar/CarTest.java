@@ -17,7 +17,7 @@ public class CarTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {0, 1, 2, 3})
+    @ValueSource(ints = {Integer.MIN_VALUE, 0, 1, 2, 3})
     void 자동차는_랜덤값이_0이상_3이하일_때_이동하지_않는다(int notMoveNumber) {
         Car car = new Car("자동차1", 0);
         car.move(notMoveNumber);
@@ -26,5 +26,13 @@ public class CarTest {
         Position position = new Position(1);
 
         assertThat(currentPosition).isNotEqualTo(position);
+    }
+
+    @Test
+    void 자동차는_랜덤값이_10이상일_때_예외를_발생시킨다() {
+        Car car = new Car("자동차1", 0);
+        Assertions.assertThatThrownBy(() -> car.move(10))
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessage("유효하지 않은 범위의 숫자입니다. 0이상 9이하의 값을 입력해주세요.");
     }
 }

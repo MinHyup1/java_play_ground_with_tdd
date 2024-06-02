@@ -12,6 +12,10 @@ public class Car {
     }
 
     public void move(int randomNumber) {
+        if (randomNumber > 9) {
+            throw new IllegalArgumentException("유효하지 않은 범위의 숫자입니다. 0이상 9이하의 값을 입력해주세요.");
+        }
+
         if (randomNumber >= MOVABLE_NUMBER_LOWER_LIMIT) {
             position = position.next();
         }
