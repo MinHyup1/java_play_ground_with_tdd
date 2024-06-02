@@ -40,4 +40,24 @@ public class PositionTest {
         assertThatThrownBy(() -> one.isLessThan(null))
             .isInstanceOf(NullPointerException.class);
     }
+
+    @Test
+    void Position은_다음_위치의_인스턴스를_생성할_수_있다() {
+        Position position = new Position(0);
+        Position nextPosition = position.next();
+
+        assertThat(nextPosition).isEqualTo(new Position(1));
+    }
+
+    @Test
+    void 최대_위치에_도달한_Position은_다음_위치의_인스턴스_생성요청_시_예외를_발생시킨다() {
+        int maxPosition = 5;
+        Position position = new Position(maxPosition);
+
+        assertThatThrownBy(() -> position.next())
+            .isInstanceOf(IllegalStateException.class)
+            .hasMessage("이미 최대 Position에 도달하여 이동할 수 없습니다.");
+    }
+
+
 }
