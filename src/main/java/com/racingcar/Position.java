@@ -7,6 +7,10 @@ public class Position {
     private int position;
 
     public Position(int position) {
+        if (position < 0 || position > 5) {
+            throw new IllegalArgumentException("유효하지 않은 값입니다. 0이상 5이하의 값을 입력해주세요.");
+        }
+
         this.position = position;
     }
 
