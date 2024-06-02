@@ -44,4 +44,20 @@ public class CarTest {
 
         assertThat(winners).containsExactly(three);
     }
+
+    @Test
+    @DisplayName("우승한 자동차는 2개 이상 일 수 있다.")
+    void 자동차_일급컬랙션_안에서_우승한_자동차는_2개_이상일_수_있다() {
+        Car one = new Car("one");
+        one.moveOrStopByRandomNumber(1);
+        Car two = new Car("two");
+        two.moveOrStopByRandomNumber(4);
+        Car three = new Car("three");
+        three.moveOrStopByRandomNumber(4);
+
+        Cars cars = new Cars(List.of(one, two, three));
+        List<Car> winners = cars.getWinner();
+
+        assertThat(winners).containsExactly(two,three);
+    }
 }
