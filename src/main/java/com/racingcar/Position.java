@@ -4,12 +4,15 @@ import java.util.Objects;
 
 public class Position {
 
+    private static final int MIN_POSITION = 0;
     private static final int MAX_POSITION = 5;
+
+    public static final Position MAX = new Position(MAX_POSITION);
 
     private int position;
 
     public Position(int position) {
-        if (position < 0 || position > 5) {
+        if (position < MIN_POSITION || position > MAX_POSITION) {
             throw new IllegalArgumentException("유효하지 않은 값입니다. 0이상 5이하의 값을 입력해주세요.");
         }
 
