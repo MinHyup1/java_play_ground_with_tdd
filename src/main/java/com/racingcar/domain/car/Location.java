@@ -17,6 +17,10 @@ public class Location {
         this.location++;
     }
 
+    public Location returnLageLocation(Location location) {
+        return new Location(Math.max(this.location, location.location));
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -25,11 +29,18 @@ public class Location {
     }
 
     @Override
+    public String toString() {
+        String locationDash = "";
+        for (int i = 0; i < this.location; i++) {
+            locationDash += "-";
+        }
+        return locationDash;
+    }
+
+    @Override
     public int hashCode() {
         return Objects.hash(location);
     }
 
-    public Location returnLageLocation(Location location) {
-        return new Location(Math.max(this.location, location.location));
-    }
+
 }

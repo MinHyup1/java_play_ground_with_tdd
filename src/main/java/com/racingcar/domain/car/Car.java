@@ -35,11 +35,19 @@ public class Car {
         return Objects.hash(name, location);
     }
 
-    public Location returnLageLocationAfterComparison(Car car) {
-        return this.location.returnLageLocation(car.location);
+    public Location returnLageLocationAfterComparison(Location comparisonLocation) {
+        return this.location.returnLageLocation(comparisonLocation);
     }
 
     public boolean isEqualLocation(Location maxLocation) {
         return this.location.equals(maxLocation);
+    }
+
+    public String locationToString() {
+        return this.location.toString();
+    }
+
+    public String toStringCarName() {
+        return this.name.toString();
     }
 }
