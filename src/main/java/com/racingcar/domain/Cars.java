@@ -2,13 +2,14 @@ package com.racingcar.domain;
 
 import com.racingcar.domain.car.Car;
 import com.racingcar.domain.car.Location;
+import com.utils.IntegerUtils;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class Cars {
 
-    private List<Car> carList = new ArrayList<Car>();
+    private List<Car> carList;
 
     public Cars(String carNames) {
         //자동차 명 중복 제거
@@ -35,10 +36,14 @@ public class Cars {
     }
 
     private Location getMaxLocation() {
-        Location maxLocation = null;
-        for (int i = 0; i < this.carList.size() - 1; i++) {
-            maxLocation = this.carList.get(i).returnLageLocationAfterComparison(this.carList.get(i + 1));
+        Location maxLocation = new Location();
+        for (int i = 0; i < this.carList.size(); i++) {
+            maxLocation = this.carList.get(i).returnLageLocationAfterComparison(maxLocation);
         }
         return maxLocation;
+    }
+
+    public void moveAll() {
+        this.carList.forEach(car -> car.moveOrStopByRandomNumber(IntegerUtils.getRandomSingleDigit()));
     }
 }
