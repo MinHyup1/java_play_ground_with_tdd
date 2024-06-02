@@ -15,7 +15,13 @@ public class Cars {
         this.cars = new ArrayList<>(cars);
     }
 
-    public List<String> findWinners() {
+    public List<CarPosition> getCurrentPositions() {
+        return cars.stream()
+            .map(car -> new CarPosition(car.getName(), car.getPosition()))
+            .collect(Collectors.toList());
+    }
+
+    public List<Name> findWinners() {
         List<Car> winner = new ArrayList<>();
         for (Car car : cars) {
             addWinner(car, winner);
