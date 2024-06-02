@@ -1,7 +1,7 @@
 package com.racingcar;
 
-import com.racingcar.domain.car.Car;
 import com.racingcar.domain.Cars;
+import com.racingcar.domain.car.Car;
 import com.racingcar.domain.car.Location;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -33,16 +33,22 @@ public class CarTest {
     @DisplayName("우승한 자동차를 선정할 수 있다.")
     void 자동차_일급컬랙션_안에서_우승한_자동차를_가려낼_수_있다() {
         Car one = new Car("one");
-        one.moveOrStopByRandomNumber(1);
+        one.moveOrStopByRandomNumber(4);
+        one.moveOrStopByRandomNumber(4);
+        one.moveOrStopByRandomNumber(4);
         Car two = new Car("two");
+        two.moveOrStopByRandomNumber(4);
+        two.moveOrStopByRandomNumber(4);
         two.moveOrStopByRandomNumber(1);
         Car three = new Car("three");
+        three.moveOrStopByRandomNumber(1);
+        three.moveOrStopByRandomNumber(1);
         three.moveOrStopByRandomNumber(4);
 
         Cars cars = new Cars(List.of(one, two, three));
         List<Car> winners = cars.getWinner();
 
-        assertThat(winners).containsExactly(three);
+        assertThat(winners).containsExactly(one);
     }
 
     @Test
