@@ -4,6 +4,8 @@ import java.util.Objects;
 
 public class Position {
 
+    private static final int MAX_POSITION = 5;
+
     private int position;
 
     public Position(int position) {
@@ -18,6 +20,13 @@ public class Position {
         Objects.requireNonNull(theOther);
 
         return this.position < theOther.position;
+    }
+
+    public Position next() {
+        if (position == MAX_POSITION) {
+            throw new IllegalStateException("이미 최대 Position에 도달하여 이동할 수 없습니다.");
+        }
+        return new Position(position + 1);
     }
 
     @Override
