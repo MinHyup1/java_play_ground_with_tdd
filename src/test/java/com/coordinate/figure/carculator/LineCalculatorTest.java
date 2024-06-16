@@ -49,9 +49,24 @@ class LineCalculatorTest {
 
         //when
         RectangleCalculator rectangleCalculator = new RectangleCalculator();
-        double distance = rectangleCalculator.calculate(coordinatesToString);
+        double area = rectangleCalculator.calculate(coordinatesToString);
 
         //then
-        assertThat(distance).isEqualTo(expected, offset(0.00099));
+        assertThat(area).isEqualTo(expected, offset(0.00099));
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"(0,0)-(0,0)-(0,0)-(0,0):0","(1,0)-(2,5)-(5,0)-(24,5):99"}, delimiter = ':')
+    void 주어진_네개의_좌표가_직사각형이_아니라면_예외가_발생한다(String input, double expected) {
+        //given
+        String coordinatesToString = input;
+
+        //when
+        RectangleCalculator rectangleCalculator = new RectangleCalculator();
+
+        //then
+        assertThatThrownBy(() -> {
+            double area = rectangleCalculator.calculate(coordinatesToString);
+        }).isInstanceOf(RuntimeException.class);
     }
 }

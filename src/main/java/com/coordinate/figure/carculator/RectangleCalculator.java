@@ -13,6 +13,8 @@ public class RectangleCalculator implements CoordinateCalculator {
         if(coordinates.size() != 4) throw new RuntimeException("not coordinate Rectangle");
 
         LinkedList<Double> lineDistances = coordinates.getAllLineDistance().stream().sorted().collect(Collectors.toCollection(LinkedList::new));
+
+        if(lineDistances.size() > 3) throw new RuntimeException("not coordinate Rectangle");
         return calculateArea(lineDistances);
     }
 
