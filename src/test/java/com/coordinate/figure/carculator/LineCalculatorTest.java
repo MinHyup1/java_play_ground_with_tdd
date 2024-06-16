@@ -3,6 +3,7 @@ package com.coordinate.figure.carculator;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.Assertions.offset;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
@@ -21,6 +22,23 @@ class LineCalculatorTest {
 
         //then
         assertThat(distance).isEqualTo(expected, offset(0.00099));
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"(0,0)-(5,0)-(1,2):5"}, delimiter = ':')
+    void 세게의_좌표는_직선거리계산기를_이용할_수_없다(String input, double expected) {
+        //given
+        String coordinatesToString = input;
+
+        //when
+        LineCalculator lineCalculator = new LineCalculator();
+
+        //then
+        assertThatThrownBy(() -> {
+            double distance = lineCalculator.calculate(coordinatesToString);
+        }).isInstanceOf(RuntimeException.class);
+
+
     }
 
     @ParameterizedTest
