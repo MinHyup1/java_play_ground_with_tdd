@@ -42,14 +42,14 @@ class LineCalculatorTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"(0,0)-(5,0)(0,1)-(1,2):5"}, delimiter = ':')
+    @CsvSource(value = {"(0,0)-(0,4)-(4,0)-(4,4):16","(0,0)-(0,5)-(4,0)-(4,5):20"}, delimiter = ':')
     void 주어진_네개의_좌표로_직사각형_면젹을_계산할_수_있다(String input, double expected) {
         //given
         String coordinatesToString = input;
 
         //when
-        LineCalculator lineCalculator = new LineCalculator();
-        double distance = lineCalculator.calculate(coordinatesToString);
+        RectangleCalculator rectangleCalculator = new RectangleCalculator();
+        double distance = rectangleCalculator.calculate(coordinatesToString);
 
         //then
         assertThat(distance).isEqualTo(expected, offset(0.00099));
