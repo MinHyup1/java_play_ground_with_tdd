@@ -1,0 +1,19 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+interface CoordinateCalculator {
+  calculate()
+}
+
+class LineCalculator
+CoordinateCalculator <|- lineCalculator
+
+class TriangleCalculator
+CoordinateCalculator <|- TriangleCalculator
+
+class SquareCalculator
+CoordinateCalculator <|- SquareCalculator
+
+
+
+@enduml
