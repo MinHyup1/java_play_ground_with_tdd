@@ -57,6 +57,25 @@ public class PointsTest {
             }
         }
 
+        @DisplayName("입력받은 좌표값의 개수가 6개이면 삼각형에 필요한 좌표의 유효성 검사를 수행한다.")
+        @Nested
+        class Nested4 {
+
+            @DisplayName("입력받은 좌표값이 삼각형 좌표가 아닌 경우 예외를 발생시킨다")
+            @Test
+            void triangle_points_exception() {
+                Points points = new Points(0, 0, 2, 0, 2, 2);
+
+            }
+
+            @DisplayName("입력받은 좌표값이 유효하면 Points 인스턴스 생성에 성공한다")
+            @Test
+            void rectangle_points_success() {
+                Points points = new Points(0, 0, 2, 0, 2, 2);
+                assertThat(points).isNotNull();
+            }
+        }
+
         @DisplayName("입력받은 좌표값 목록을 이용하여 좌표 일급컬렉션을 생성한다.")
         @Test
         void test() {

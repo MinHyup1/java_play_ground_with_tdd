@@ -39,8 +39,25 @@ public class Points {
             return;
         }
 
-        //todo 삼각형인 경우
-        this.points = List.of();
+        if (values.length == 6) {
+            validateTriangle(values);
+            this.points = Arrays.stream(values)
+                .mapToObj(Point::new)
+                .collect(Collectors.toList());
+            return;
+        }
+
+        throw new IllegalArgumentException("???");
+    }
+
+    private void validateTriangle(int[] values) {
+        long uniqueValueCnt = Arrays.stream(values)
+            .boxed()
+            .collect(Collectors.toSet())
+            .stream()
+            .count();
+
+        //todo 삼각형 좌표에 대한 검사 로직
     }
 
     private void validateLine(int[] values) {
