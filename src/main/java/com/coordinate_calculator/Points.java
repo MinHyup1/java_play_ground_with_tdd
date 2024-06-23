@@ -1,5 +1,6 @@
 package com.coordinate_calculator;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -27,6 +28,18 @@ public class Points {
 
         //todo 직선, 삼각형인 경우
         this.points = List.of();
+    }
+
+    /**
+     * 좌표 일급컬렉션으로 변환
+     * @return 좌표 일급컬렉션
+     */
+    public Coordinates toCoordinates() {
+        List<Coordinate> coordinates = new ArrayList<>();
+        for (int i = 0; i < points.size(); i += 2) {
+            coordinates.add(new Coordinate(points.get(i), points.get(i + 1)));
+        }
+        return new Coordinates(coordinates);
     }
 
     private static void validateRectangle(int[] values) {

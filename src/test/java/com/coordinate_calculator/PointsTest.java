@@ -1,5 +1,6 @@
 package com.coordinate_calculator;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.assertj.core.api.Assertions;
@@ -33,8 +34,17 @@ public class PointsTest {
             @Test
             void rectangle_points_success() {
                 Points points = new Points(0, 0, 2, 0, 2, 2, 2, 2);
-                Assertions.assertThat(points).isNotNull();
+                assertThat(points).isNotNull();
             }
+        }
+
+        @DisplayName("입력받은 좌표값 목록을 이용하여 좌표 일급컬렉션을 생성한다.")
+        @Test
+        void test() {
+            Points points = new Points(0, 0, 2, 0, 2, 2, 2, 2);
+            Coordinates coordinates = points.toCoordinates();
+
+            assertThat(coordinates).isNotNull();
         }
     }
 }
