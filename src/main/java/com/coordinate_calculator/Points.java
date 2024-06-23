@@ -26,8 +26,28 @@ public class Points {
             return;
         }
 
-        //todo 직선, 삼각형인 경우
+        if (values.length == 4) {
+            validateLine(values);
+            this.points = Arrays.stream(values)
+                .mapToObj(Point::new)
+                .collect(Collectors.toList());
+            return;
+        }
+
+        //todo 삼각형인 경우
         this.points = List.of();
+    }
+
+    private void validateLine(int[] values) {
+        long uniqueValueCnt = Arrays.stream(values)
+            .boxed()
+            .collect(Collectors.toSet())
+            .stream()
+            .count();
+
+        if (uniqueValueCnt < 2) {
+            throw new IllegalArgumentException("서로 다른 좌표를 입력해주세요.");
+        }
     }
 
     /**
