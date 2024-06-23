@@ -23,18 +23,30 @@ public class Coordinates {
     // 어디선가 enum 가지고 분기문 태우는 코드를 작성할 여지도 줄일 수 있었을 듯.
     public Result calculate() {
         if (coordinates.size() == 2) {
-            Coordinate one = coordinates.get(0);
-            Coordinate theOther = coordinates.get(1);
-            Double distance = one.calculateDistance(theOther);
-            return new Result(Figure.LINE, distance);
+            return getLineResult();
         }
 
         if (coordinates.size() == 4) {
-            Double height = getHeight();
-            Double width = getWidth();
-            return new Result(Figure.RECTANGLE, height * width);
+            return getRectangleResult();
         }
 
+        return getTriangleResult();
+    }
+
+    private Result getLineResult() {
+        Coordinate one = coordinates.get(0);
+        Coordinate theOther = coordinates.get(1);
+        Double distance = one.calculateDistance(theOther);
+        return new Result(Figure.LINE, distance);
+    }
+
+    private Result getRectangleResult() {
+        Double height = getHeight();
+        Double width = getWidth();
+        return new Result(Figure.RECTANGLE, height * width);
+    }
+
+    private Result getTriangleResult() {
         Double a = coordinates.get(0).calculateDistance(coordinates.get(1));
         Double b = coordinates.get(0).calculateDistance(coordinates.get(2));
         Double c = coordinates.get(1).calculateDistance(coordinates.get(2));
