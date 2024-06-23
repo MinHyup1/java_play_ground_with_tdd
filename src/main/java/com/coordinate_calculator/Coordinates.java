@@ -29,11 +29,20 @@ public class Coordinates {
             return new Result(Figure.LINE, distance);
         }
 
-        Double height = getHeight();
-        Double width = getWidth();
-        return new Result(Figure.RECTANGLE, height * width);
-    }
+        if (coordinates.size() == 4) {
+            Double height = getHeight();
+            Double width = getWidth();
+            return new Result(Figure.RECTANGLE, height * width);
+        }
 
+        Double a = coordinates.get(0).calculateDistance(coordinates.get(1));
+        Double b = coordinates.get(0).calculateDistance(coordinates.get(2));
+        Double c = coordinates.get(1).calculateDistance(coordinates.get(2));
+
+        double area = Math.sqrt((a + b + c) * (-a + b + c) * (a - b + c) * (a + b - c)) / 4;
+
+        return new Result(Figure.TRIANGLE, area);
+    }
 
     private Double getHeight() {
         Coordinate left = coordinates.stream()

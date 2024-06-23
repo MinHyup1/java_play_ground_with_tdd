@@ -51,5 +51,24 @@ public class CoordinatesTest {
                 () -> assertThat(print.contains("4.0000"))
             );
         }
+
+        @DisplayName("좌표 개수가 3개이면 삼각형의 면적을 계산한다")
+        @Test
+        void calculate_triangle_area_when_coordinates_size_is_three() {
+            //given
+            Points points = new Points(0, 0, 3, 5, 10, 24);
+            Coordinates coordinates = points.toCoordinates();
+
+            //when
+            Result result = coordinates.calculate();
+            String print = result.print(4);
+
+            //then
+            Assertions.assertAll(
+                () -> assertThat(print.contains("삼각형")),
+                () -> assertThat(print.contains("면적")),
+                () -> assertThat(print.contains("11.0000"))
+            );
+        }
     }
 }
