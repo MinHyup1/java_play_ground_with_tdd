@@ -23,15 +23,39 @@ public class Coordinate {
             throw new IllegalArgumentException();
         }
 
-        return Math.sqrt(Math.pow(Math.abs(this.getPointX() - theOther.getPointX()), 2)
-                + Math.pow(Math.abs(this.getPointY() - theOther.getPointY()), 2));
+        return Math.sqrt(Math.pow(Math.abs(this.getValueX() - theOther.getValueX()), 2)
+                + Math.pow(Math.abs(this.getValueY() - theOther.getValueY()), 2));
     }
 
-    private int getPointX() {
+    /**
+     * 두 좌표 중 좌측에 있는 좌표를 리턴
+     * @param theOther
+     * @return
+     */
+    public Coordinate findLeft(Coordinate theOther) {
+        if (this.getValueX() < theOther.getValueX()) {
+            return this;
+        }
+        return theOther;
+    }
+
+    /**
+     * 두 좌표 중 위측에 있는 좌표를 리턴
+     * @param theOther
+     * @return
+     */
+    public Coordinate findUpper(Coordinate theOther) {
+        if (this.getValueY() > theOther.getValueY()) {
+            return this;
+        }
+        return theOther;
+    }
+
+    private int getValueX() {
         return this.x.getValue();
     }
 
-    private int getPointY() {
+    private int getValueY() {
         return this.y.getValue();
     }
 

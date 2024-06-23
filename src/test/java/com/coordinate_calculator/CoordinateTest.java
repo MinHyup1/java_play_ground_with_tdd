@@ -25,4 +25,22 @@ public class CoordinateTest {
         //then
         Assertions.assertEquals(distance, distanceResult, 0.001, "(0,0), (1,2)의 직선 거리는 2.236");
     }
+
+    @Test
+    void 좌표는_자신과_다른_좌표_중_누가_좌측에_있는지_판단할_수_있다() {
+        //given
+        Coordinate left = new Coordinate(new Point(0), new Point(0));
+        Coordinate right = new Coordinate(new Point(1), new Point(2));
+
+        assertThat(right.findLeft(left)).isSameAs(left);
+    }
+
+    @Test
+    void 좌표는_자신과_다른_좌표_중_누가_위측에_있는지_판단할_수_있다() {
+        //given
+        Coordinate lower = new Coordinate(new Point(0), new Point(0));
+        Coordinate upper = new Coordinate(new Point(0), new Point(1));
+
+        assertThat(upper.findUpper(lower)).isSameAs(upper);
+    }
 }
