@@ -5,10 +5,10 @@ import java.util.*;
 public class Points {
     List<Point> Points = new ArrayList<>();
 
-    public Points(String coordinatesToString) {
-        String[] coordinates = coordinatesToString.split("-");
-        for (int i = 0; i < coordinates.length; i++) {
-            this.Points.add(new Point(coordinates[i].replaceAll("[()]", "")));
+    public Points(String pointString) {
+        String[] pointArray = pointString.split("-");
+        for (int i = 0; i < pointArray.length; i++) {
+            this.Points.add(new Point(pointArray[i].replaceAll("[()]", "")));
         }
     }
 

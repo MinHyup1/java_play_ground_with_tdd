@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.offset;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 
-class LineCalculatorTest {
+class CoordinateCalculatorTest {
 
     @ParameterizedTest
     @CsvSource(value = {"(0,0)-(5,0):5","(0,1)-(1,2):1.4142","(10,10)-(15,15):7.0710","(0,0)-(0,0):0","(0,0)-(24,24):33.9411"}, delimiter = ':')
@@ -68,5 +68,19 @@ class LineCalculatorTest {
         assertThatThrownBy(() -> {
             double area = rectangleCalculator.calculate(coordinatesToString);
         }).isInstanceOf(RuntimeException.class);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"(0,0)-(0,4)-(4,4):8"}, delimiter = ':')
+    void 주어진_네개의_좌표로_삼각형의_면젹을_계산할_수_있다(String input, double expected) {
+        //given
+        String coordinatesToString = input;
+
+        //when
+        TriangleCalculator triangleCalculator = new TriangleCalculator();
+        double area = triangleCalculator.calculate(coordinatesToString);
+
+        //then
+        assertThat(area).isEqualTo(expected, offset(0.00099));
     }
 }

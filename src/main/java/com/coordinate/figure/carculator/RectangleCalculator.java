@@ -8,11 +8,12 @@ import java.util.stream.Collectors;
 
 public class RectangleCalculator implements CoordinateCalculator {
     @Override
-    public double calculate(String coordinatesToString) {
-        Points coordinates = new Points(coordinatesToString);
-        if(coordinates.size() != 4) throw new RuntimeException("not coordinate Rectangle");
+    public double calculate(String pointsString) {
+        Points points = new Points(pointsString);
+        if(points.size() != 4) throw new RuntimeException("not coordinate Rectangle");
 
-        LinkedList<Double> lineDistances = coordinates.getAllLineDistance().stream().sorted().collect(Collectors.toCollection(LinkedList::new));
+        LinkedList<Double> lineDistances = points.getAllLineDistance().stream()
+                .sorted().collect(Collectors.toCollection(LinkedList::new));
 
         if(lineDistances.size() > 3) throw new RuntimeException("not coordinate Rectangle");
         return calculateArea(lineDistances);
