@@ -18,6 +18,9 @@ public class Coordinates {
      * 좌표 개수별 계산 로직 수행
      * @return
      */
+    //todo Result가 아니라 Figure를 리턴했으면 더 좋았을 것같다.
+    // 그러면 괜히 enum 만들어서 구현이 Coordinates로 새어나오게 하지도 않았을 거고,
+    // 어디선가 enum 가지고 분기문 태우는 코드를 작성할 여지도 줄일 수 있었을 듯.
     public Result calculate() {
         if (coordinates.size() == 2) {
             Coordinate one = coordinates.get(0);
