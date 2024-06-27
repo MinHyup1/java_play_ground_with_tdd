@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
  * todo 처음엔 도형별 좌표 유효성 검사를 맡기려고 Points 일급 컬렉션을 만든 거였는데
  *  도형별 유효성 검사를 Points에게 맡기니까 오히려 불편하다..
  *  Coordinates 정도만 있어도 충분할 것 같고 Points는 제거하는 게 더 나아보인다.
+ *  // [review] 동감합니다.
  */
 public class Points {
 

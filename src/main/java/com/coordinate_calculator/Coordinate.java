@@ -17,6 +17,7 @@ public class Coordinate {
      * @param theOther
      * @return
      */
+    // [review] 개인적인 생각으로는 좌표가 계산하기보다는 계산기 객체를 만들어서 좌표를 넘겨주면 더 객체지향적일것 같습니다.
     public Double calculateDistance(Coordinate theOther) {
         Objects.requireNonNull(theOther);
         if (this.equals(theOther)) {
