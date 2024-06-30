@@ -15,9 +15,10 @@ public class Rectangle implements Figure {
     }
 
     @Override
-    public String getCalculateResult(int decimalPlaces) {
+    public Double getCalculateResult(int decimalPlaces) {
         BigDecimal bigDecimal = BigDecimal.valueOf(calculateResult);
         bigDecimal = bigDecimal.setScale(decimalPlaces, RoundingMode.HALF_UP);
-        return String.format("사각형 넓이는 %s", bigDecimal.toString());
+//        return String.format("사각형 넓이는 %s", bigDecimal.toString());
+        return bigDecimal.doubleValue();
     }
 }

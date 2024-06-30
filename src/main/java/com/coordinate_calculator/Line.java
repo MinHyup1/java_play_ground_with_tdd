@@ -15,9 +15,10 @@ public class Line implements Figure {
     }
 
     @Override
-    public String getCalculateResult(int decimalPlaces) {
+    public Double getCalculateResult(int decimalPlaces) {
         BigDecimal bigDecimal = BigDecimal.valueOf(calculateResult);
         bigDecimal = bigDecimal.setScale(decimalPlaces, RoundingMode.HALF_UP);
-        return String.format("두 점 사이의 거리는 %s", bigDecimal.toString());
+//        return String.format("두 점 사이의 거리는 %s", bigDecimal.toString());
+        return bigDecimal.doubleValue();
     }
 }
