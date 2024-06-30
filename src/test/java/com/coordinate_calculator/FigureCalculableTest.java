@@ -42,5 +42,17 @@ public class FigureCalculableTest {
         Figure figure = triangleCalculator.calculate();
         assertThat(figure).isInstanceOf(Triangle.class);
     }
+
+    @Test
+    void 직사각형_계산기가_리턴하는_인스턴스_타입은_Rectangle이다() {
+        Coordinate one = new Coordinate(new Point(0), new Point(0));
+        Coordinate two = new Coordinate(new Point(1), new Point(2));
+        Coordinate three = new Coordinate(new Point(0), new Point(2));
+        Coordinate four = new Coordinate(new Point(2), new Point(2));
+        FigureCalculable rectangleCalculator = FigureCalculatorFactory.create(List.of(one, two, three, four));
+
+        Figure figure = rectangleCalculator.calculate();
+        assertThat(figure).isInstanceOf(Rectangle.class);
+    }
 }
 

@@ -16,6 +16,7 @@ public class RectangleCalculator implements FigureCalculable {
 
     @Override
     public Figure calculate() {
-        return null;
+        Double area = null; //todo 계산
+        return new Rectangle(coordinates, area);
     }
 }
