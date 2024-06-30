@@ -15,8 +15,8 @@ public class CoordinateTest {
     @Test
     void 좌표는_다른_좌표를_전달_받아_거리를_계산할_수_있다() {
         //given
-        Coordinate one = new Coordinate(0, 0);
-        Coordinate theOther = new Coordinate(1, 2);
+        Coordinate one = new Coordinate(new Point(0), new Point(0));
+        Coordinate theOther = new Coordinate(new Point(1), new Point(2));
         double distanceResult = Math.sqrt(Math.pow(1 - 0, 2) + Math.pow(2 - 0, 2));
 
         //when
