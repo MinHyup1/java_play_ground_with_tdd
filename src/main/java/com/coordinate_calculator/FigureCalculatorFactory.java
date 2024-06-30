@@ -13,6 +13,7 @@ public class FigureCalculatorFactory {
         FigureCalculable calculator = switch (calculates.size()) {
             case 2 -> new LineCalculator(new ArrayList<>(calculates));
             case 3 -> new TriangleCalculator(new LinkedList<>(calculates));
+            case 4 -> new RectangleCalculator(new LinkedList<>(calculates));
             default -> throw new IllegalArgumentException("???");
         };
 
