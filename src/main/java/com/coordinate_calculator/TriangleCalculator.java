@@ -13,4 +13,10 @@ public class TriangleCalculator implements FigureCalculable {
         }
         this.coordinates = coordinates;
     }
+
+    @Override
+    public Figure calculate() {
+        Double area = null;//todo 계산
+        return new Triangle(coordinates, area);
+    }
 }

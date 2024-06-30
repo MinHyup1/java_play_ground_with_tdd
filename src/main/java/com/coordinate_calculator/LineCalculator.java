@@ -13,4 +13,12 @@ public class LineCalculator implements FigureCalculable {
         }
         this.coordinates = coordinates;
     }
+
+    @Override
+    public Figure calculate() {
+        Coordinate one = coordinates.get(0);
+        Coordinate theOther = coordinates.get(1);
+        Double distance = one.calculateDistance(theOther);
+        return new Line(coordinates, distance);
+    }
 }

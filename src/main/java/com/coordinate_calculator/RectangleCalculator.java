@@ -13,4 +13,9 @@ public class RectangleCalculator implements FigureCalculable {
         }
         this.coordinates = coordinates;
     }
+
+    @Override
+    public Figure calculate() {
+        return null;
+    }
 }
