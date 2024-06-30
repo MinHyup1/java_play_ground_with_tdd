@@ -25,5 +25,16 @@ public class FigureCalculatorFactoryTest {
 
             assertThat(calculator).isInstanceOf(LineCalculator.class);
         }
+
+        @Test
+        void 좌표를_세개_주입_받으면_삼각형_계산기를_생성한다() {
+            Coordinate one = new Coordinate(new Point(0), new Point(0));
+            Coordinate two = new Coordinate(new Point(2), new Point(0));
+            Coordinate three = new Coordinate(new Point(0), new Point(2));
+
+            FigureCalculable calculator = FigureCalculatorFactory.create(List.of(one, two, three));
+
+            assertThat(calculator).isInstanceOf(TriangleCalculator.class);
+        }
     }
 }

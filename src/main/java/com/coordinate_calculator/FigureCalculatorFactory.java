@@ -2,6 +2,7 @@ package com.coordinate_calculator;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.LinkedList;
 import java.util.Objects;
 
 public class FigureCalculatorFactory {
@@ -11,6 +12,7 @@ public class FigureCalculatorFactory {
 
         FigureCalculable calculator = switch (calculates.size()) {
             case 2 -> new LineCalculator(new ArrayList<>(calculates));
+            case 3 -> new TriangleCalculator(new LinkedList<>(calculates));
             default -> throw new IllegalArgumentException("???");
         };
 
