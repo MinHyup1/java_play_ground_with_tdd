@@ -65,4 +65,8 @@ public enum CardPattern {
         this.name = name;
         this.score = score;
     }
+
+    public boolean isAce() {
+        return this == CLOVER_ACE || this == HEART_ACE || this == SPADE_ACE || this == DIAMOND_ACE;
+    }
 }
