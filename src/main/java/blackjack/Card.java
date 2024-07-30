@@ -2,19 +2,9 @@ package blackjack;
 
 public class Card {
 
-    private String pattern;
-    private int score;
+    private CardPattern cardPattern;
 
-    public Card(String pattern, int score) {
-        this.pattern = pattern;
-        this.score = score;
-    }
-
-    public String getPattern() {
-        return pattern;
-    }
-
-    public int getScore() {
-        return score;
+    public Card(CardPattern cardPattern) {
+        this.cardPattern = cardPattern;
     }
 }
