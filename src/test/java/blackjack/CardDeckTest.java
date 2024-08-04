@@ -26,4 +26,13 @@ public class CardDeckTest {
         CardDeck cardDeck = new CardDeck();
         assertThat(cardDeck.addCard(new Card(CardPattern.CLOVER_ACE))).isTrue();
     }
+
+    @DisplayName("CardDeck에는 카드를 중복하여 추가할 수 없다.")
+    @Test
+    void card_deck_has_unique_cards() {
+        CardDeck cardDeck = new CardDeck();
+
+        assertThat(cardDeck.addCard(new Card(CardPattern.CLOVER_ACE))).isTrue();
+        assertThat(cardDeck.addCard(new Card(CardPattern.CLOVER_ACE))).isFalse();
+    }
 }

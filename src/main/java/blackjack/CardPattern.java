@@ -1,5 +1,6 @@
 package blackjack;
 
+//todo Card 삭제, CardPattern enum을 Card로 대체
 public enum CardPattern {
 
     SPADE_TWO("스페이드", 2),
