@@ -17,4 +17,9 @@ public class Players {
         PlayerStatus dealerStatus = new PlayerStatus(dealer, true);
         this.playerStatuses.add(dealerStatus);
     }
+
+    public boolean isAllDone() {
+        return !playerStatuses.stream()
+            .anyMatch(PlayerStatus::isProceeding);
+    }
 }
