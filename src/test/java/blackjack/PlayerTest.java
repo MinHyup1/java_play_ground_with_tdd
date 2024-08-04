@@ -51,8 +51,8 @@ public class PlayerTest {
         Player participant = Player.participant("참가자1", 10000, new CardDeck());
         Player dealer = Player.dealer(new CardDeck());
 
-        assertThat(participant.addCard(new Card(CardPattern.CLOVER_ACE))).isTrue();
-        assertThat(dealer.addCard(new Card(CardPattern.CLOVER_ACE))).isTrue();
+        assertThat(participant.addCard(Card.CLOVER_ACE)).isTrue();
+        assertThat(dealer.addCard(Card.CLOVER_ACE)).isTrue();
     }
 
     @DisplayName("플레이어는 카드 덱에 카드를 중복하여 추가할 수 있다.")
@@ -61,10 +61,10 @@ public class PlayerTest {
         Player participant = Player.participant("참가자1", 10000, new CardDeck());
         Player dealer = Player.dealer(new CardDeck());
 
-        assertThat(participant.addCard(new Card(CardPattern.CLOVER_ACE))).isTrue();
-        assertThat(participant.addCard(new Card(CardPattern.CLOVER_ACE))).isFalse();
-        assertThat(dealer.addCard(new Card(CardPattern.CLOVER_ACE))).isTrue();
-        assertThat(dealer.addCard(new Card(CardPattern.CLOVER_ACE))).isFalse();
+        assertThat(participant.addCard(Card.CLOVER_ACE)).isTrue();
+        assertThat(participant.addCard(Card.CLOVER_ACE)).isFalse();
+        assertThat(dealer.addCard(Card.CLOVER_ACE)).isTrue();
+        assertThat(dealer.addCard(Card.CLOVER_ACE)).isFalse();
     }
 
     @DisplayName("addCard에 null을 입력하면 예외를 발생시킨다.")

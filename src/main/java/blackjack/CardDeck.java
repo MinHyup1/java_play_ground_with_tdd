@@ -17,13 +17,22 @@ public class CardDeck {
             throw new IllegalStateException("no cards");
         }
 
-        return cards.stream()
+        int sum = cards.stream()
             .mapToInt(Card::getScore)
             .sum();
+
+        if (21 < sum) {
+            boolean aceExists = cards.stream()
+                .anyMatch(Card::isAce);
+            if (aceExists) {
+                return sum - 10;
+            }
+        }
+        return sum;
     }
 
-    public boolean addCard(Card card) {
-        Objects.requireNonNull(card, "card");
-        return this.cards.add(card);
+    public boolean addCard(Card cardTemp) {
+        Objects.requireNonNull(cardTemp, "card");
+        return this.cards.add(cardTemp);
     }
 }
