@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class Player {
 
+    //todo 인스턴스 변수 3개 미만으로 유지
     private final String name;
     private Integer betAmount;
     private final CardDeck cardDeck;
