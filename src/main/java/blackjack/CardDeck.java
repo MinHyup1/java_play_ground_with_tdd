@@ -31,8 +31,8 @@ public class CardDeck {
         return sum;
     }
 
-    public boolean addCard(Card cardTemp) {
-        Objects.requireNonNull(cardTemp, "card");
-        return this.cards.add(cardTemp);
+    public boolean addCard(Card card) {
+        Objects.requireNonNull(card, "card");
+        return this.cards.add(card);
     }
 }
