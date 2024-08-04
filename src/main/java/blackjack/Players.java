@@ -14,7 +14,7 @@ public class Players {
     //todo 딜러를 구분하고 싶은데..
     private void addDealerStatus() {
         Player dealer = Player.dealer(new CardDeck());
-        PlayerStatus dealerStatus = new PlayerStatus(dealer);
+        PlayerStatus dealerStatus = new PlayerStatus(dealer, true);
         this.playerStatuses.add(dealerStatus);
     }
 }

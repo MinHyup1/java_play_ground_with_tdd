@@ -15,10 +15,10 @@ public class PlayersTest {
         Player 참가자2 = Player.participant("참가자2", 20000, new CardDeck());
         Player 참가자3 = Player.participant("참가자3", 30000, new CardDeck());
         Players players = new Players(List.of(
-            new PlayerStatus(참가자1),
-            new PlayerStatus(참가자2),
-            new PlayerStatus(참가자3)));
+            new PlayerStatus(참가자1, true),
+            new PlayerStatus(참가자2, true),
+            new PlayerStatus(참가자3, true)));
 
-        Assertions.assertThat(players).isNotNull();
+        assertThat(players).isNotNull();
     }
 }
