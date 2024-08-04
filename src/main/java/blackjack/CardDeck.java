@@ -11,10 +11,14 @@ public class CardDeck {
         this.cards = new HashSet<>();
     }
 
-    public void countUpScore() {
+    public int countUpScore() {
         if (this.cards.isEmpty()) {
             throw new IllegalStateException("no cards");
         }
+
+        return cards.stream()
+            .mapToInt(Card::getScore)
+            .sum();
     }
 
     public boolean addCard(Card card) {

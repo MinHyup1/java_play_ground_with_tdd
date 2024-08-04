@@ -35,4 +35,14 @@ public class CardDeckTest {
         assertThat(cardDeck.addCard(new Card(CardPattern.CLOVER_ACE))).isTrue();
         assertThat(cardDeck.addCard(new Card(CardPattern.CLOVER_ACE))).isFalse();
     }
+
+    @DisplayName("CardDeck은 카드 목록의 점수를 합산할 수 있다.")
+    @Test
+    void card_deck_count_up_total_score_of_its_own_cards() {
+        CardDeck cardDeck = new CardDeck();
+        cardDeck.addCard(new Card(CardPattern.CLOVER_ACE)); // 11
+        cardDeck.addCard(new Card(CardPattern.HEART_TWO)); // 2
+
+        assertThat(cardDeck.countUpScore()).isEqualTo(13);
+    }
 }
