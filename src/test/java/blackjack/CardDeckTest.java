@@ -45,4 +45,14 @@ public class CardDeckTest {
 
         assertThat(cardDeck.countUpScore()).isEqualTo(13);
     }
+
+    @DisplayName("CardDeck은 카드 목록이 비어있을 때 예외를 발생시킨다.")
+    @Test
+    void countUp_throws_exception_when_card_deck_has_no_cards() {
+        CardDeck cardDeck = new CardDeck();
+
+        assertThatThrownBy(() -> cardDeck.countUpScore())
+            .isInstanceOf(IllegalStateException.class)
+            .hasMessage("no cards");
+    }
 }
