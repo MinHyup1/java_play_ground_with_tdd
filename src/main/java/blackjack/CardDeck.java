@@ -35,4 +35,15 @@ public class CardDeck {
         Objects.requireNonNull(card, "card");
         return this.cards.add(card);
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (Card card : cards) {
+            sb.append(card).append(", ");
+        }
+
+        sb.delete(sb.lastIndexOf(", "), sb.lastIndexOf(", ") + 1);
+        return sb.toString();
+    }
 }

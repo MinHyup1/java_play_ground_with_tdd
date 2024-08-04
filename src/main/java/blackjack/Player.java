@@ -55,4 +55,8 @@ public class Player {
     public boolean isProceeding() {
         return this.proceeding;
     }
+
+    public String getCardPrint() {
+        return this.cardDeck.toString();
+    }
 }
