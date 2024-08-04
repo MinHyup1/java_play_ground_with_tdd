@@ -42,4 +42,8 @@ public class Player {
     public Integer getBetAmount() {
         return this.betAmount;
     }
+
+    public boolean addCard(Card card) {
+        return this.cardDeck.addCard(card);
+    }
 }
