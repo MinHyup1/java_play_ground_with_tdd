@@ -1,5 +1,6 @@
 package blackjack;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.assertj.core.api.Assertions;
@@ -17,5 +18,12 @@ public class CardDeckTest {
         assertThatThrownBy(() -> cardDeck.countUpScore())
             .isInstanceOf(IllegalStateException.class)
             .hasMessage("no cards");
+    }
+
+    @DisplayName("CardDeck은 카드 덱에 카드를 추가할 수 있다.")
+    @Test
+    void card_deck_can_add_card() {
+        CardDeck cardDeck = new CardDeck();
+        assertThat(cardDeck.addCard(new Card(CardPattern.CLOVER_ACE))).isTrue();
     }
 }
