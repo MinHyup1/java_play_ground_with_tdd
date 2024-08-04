@@ -1,6 +1,7 @@
 package blackjack;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -64,5 +65,15 @@ public class PlayerTest {
         assertThat(participant.addCard(new Card(CardPattern.CLOVER_ACE))).isFalse();
         assertThat(dealer.addCard(new Card(CardPattern.CLOVER_ACE))).isTrue();
         assertThat(dealer.addCard(new Card(CardPattern.CLOVER_ACE))).isFalse();
+    }
+
+    @DisplayName("addCard에 null을 입력하면 예외를 발생시킨다.")
+    @Test
+    void player_add_card_exception_test() {
+        Player participant = Player.participant("참가자1", 10000, new CardDeck());
+
+        assertThatThrownBy(() -> participant.addCard(null))
+            .isInstanceOf(NullPointerException.class)
+            .hasMessage("card");
     }
 }

@@ -44,6 +44,7 @@ public class Player {
     }
 
     public boolean addCard(Card card) {
+        Objects.requireNonNull(card, "card");
         return this.cardDeck.addCard(card);
     }
 }

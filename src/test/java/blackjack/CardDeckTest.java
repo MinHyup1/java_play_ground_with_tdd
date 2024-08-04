@@ -46,6 +46,16 @@ public class CardDeckTest {
         assertThat(cardDeck.countUpScore()).isEqualTo(13);
     }
 
+    @DisplayName("addCard()에 null을 입력하면 예외를 발생시킨다.")
+    @Test
+    void card_deck_add_card_exception_test() {
+        CardDeck cardDeck = new CardDeck();
+
+        assertThatThrownBy(() -> cardDeck.addCard(null))
+            .isInstanceOf(NullPointerException.class)
+            .hasMessage("card");
+    }
+
     @DisplayName("CardDeck은 카드 목록이 비어있을 때 예외를 발생시킨다.")
     @Test
     void countUp_throws_exception_when_card_deck_has_no_cards() {

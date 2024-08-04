@@ -1,6 +1,7 @@
 package blackjack;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 public class CardDeck {
@@ -22,6 +23,7 @@ public class CardDeck {
     }
 
     public boolean addCard(Card card) {
+        Objects.requireNonNull(card, "card");
         return this.cards.add(card);
     }
 }
