@@ -5,21 +5,20 @@ import java.util.List;
 
 public class Players {
 
-    private List<PlayerStatus> playerStatuses;
+    private List<Player> players;
 
-    Players(List<PlayerStatus> playerStatuses) {
-        this.playerStatuses = new ArrayList<>(playerStatuses);
+    Players(List<Player> players) {
+        this.players = new ArrayList<>(players);
         addDealerStatus();
     }
     //todo 딜러를 구분하고 싶은데..
     private void addDealerStatus() {
-        Player dealer = Player.dealer(new CardDeck());
-        PlayerStatus dealerStatus = new PlayerStatus(dealer, true);
-        this.playerStatuses.add(dealerStatus);
+        Player dealer = Player.dealer(new CardDeck(), true);
+        this.players.add(dealer);
     }
 
     public boolean isAllDone() {
-        return !playerStatuses.stream()
-            .anyMatch(PlayerStatus::isProceeding);
+        return !players.stream()
+            .anyMatch(Player::isProceeding);
     }
 }
