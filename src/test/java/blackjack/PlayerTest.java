@@ -76,4 +76,14 @@ public class PlayerTest {
             .isInstanceOf(NullPointerException.class)
             .hasMessage("card");
     }
+
+    @DisplayName("플레이어는 자신의 카드 점수를 합산할 수 있다.")
+    @Test
+    void player_can_total_points_of_his_cards() {
+        Player player = Player.participant("참가자1", 10000, new CardDeck(), true);
+        player.addCard(Card.CLOVER_ACE);
+        player.addCard(Card.CLOVER_EIGHT);
+
+        assertThat(player.totalCardPoint()).isEqualTo(19);
+    }
 }

@@ -59,4 +59,8 @@ public class Player {
     public String getCardPrint() {
         return this.cardDeck.toString();
     }
+
+    public Integer totalCardPoint() {
+        return cardDeck.countUpScore();
+    }
 }
