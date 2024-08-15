@@ -6,6 +6,8 @@ import java.util.stream.Collectors;
 
 public class Players {
 
+    private static final Integer BLACKJACK_POINT = 21;
+
     private List<Player> players;
 
     Players(List<Player> players) {
@@ -36,5 +38,10 @@ public class Players {
             while (!player.addCard(Card.random())) {
             }
         }
+    }
+
+    public boolean anyoneGotBlackjack() {
+        return players.stream()
+            .anyMatch(player -> player.totalCardPoint() == BLACKJACK_POINT);
     }
 }

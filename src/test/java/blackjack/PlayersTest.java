@@ -40,4 +40,15 @@ public class PlayersTest {
 
         assertThat(players.isAllDone()).isFalse();
     }
+
+    @DisplayName("Players는 블랙잭이 된 플레이어가 존재하는지 확인할 수 있다.")
+    @Test
+    void players_can_find_out_blackjack_player() {
+        Player 참가자1 = Player.participant("참가자1", 10000, new CardDeck(), false);
+        참가자1.addCard(Card.CLOVER_ACE); // 11
+        참가자1.addCard(Card.CLOVER_TEN); // 10
+        Players players = new Players(List.of(참가자1));
+
+        assertThat(players.anyoneGotBlackjack()).isTrue();
+    }
 }
