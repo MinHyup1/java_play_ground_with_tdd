@@ -80,4 +80,25 @@ public class PlayersTest {
         //then
         assertThat(players.isAllDone()).isTrue();
     }
+
+    @DisplayName("플레이어만 블랙잭이 되면 플레이어의 승리가 되며 승리한 플에이어는 베팅 금액의 1.5배를 돌려받는다.")
+    @Test
+    void win_test() {
+        //given
+        Player 참가자1 = Player.participant("참가자1", 10000, new CardDeck(), true);
+        참가자1.addCard(Card.CLOVER_TEN); // 10
+        참가자1.addCard(Card.CLOVER_ACE); // 11
+
+        Player 딜러 = Player.dealer(new CardDeck(), true);
+        딜러.addCard(Card.CLOVER_TEN); // 10
+        딜러.addCard(Card.CLOVER_TWO); // 2
+
+        Players players = new Players(List.of(참가자1), 딜러);
+
+        //when
+        players.checkWinner();
+
+        //then
+        assertThat(players.isAllDone()).isTrue();
+    }
 }

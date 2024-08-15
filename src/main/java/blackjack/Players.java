@@ -49,4 +49,28 @@ public class Players {
             players.forEach(Player::draw);
         }
     }
+
+    public void checkWinner() {
+        boolean blackjackPlayerExists = players.stream()
+            .anyMatch(Player::gotBlackjack);
+
+        if (!dealer.gotBlackjack() && blackjackPlayerExists) {
+            List<Player> winners = players.stream()
+                .filter(Player::gotBlackjack)
+                .collect(Collectors.toList());
+
+            int winnersBetAmounts = winners.stream()
+                .mapToInt(Player::getBetAmount)
+                .sum();
+            winners.forEach(Player::win);
+            dealer.minusBetAmount(winnersBetAmounts); // todo 딜러 타입 추가 후 분리
+
+            players.removeAll(winners); //looser
+            int losersBetAmounts = players.stream()
+                .mapToInt(Player::getBetAmount)
+                .sum();
+            players.forEach(Player::lose);
+            dealer.plusBetAmount(losersBetAmounts);
+        }
+    }
 }

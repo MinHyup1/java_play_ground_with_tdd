@@ -6,7 +6,7 @@ public class Player {
 
     //todo 인스턴스 변수 3개 미만으로 유지
     private final String name;
-    private Integer betAmount;
+    private int betAmount;
     private final CardDeck cardDeck;
     private boolean proceeding;
 
@@ -70,5 +70,40 @@ public class Player {
 
     public boolean gotBlackjack() {
         return cardDeck.isBlackjack();
+    }
+
+    public void win() {
+        this.betAmount += (int) Math.round(this.betAmount * 0.5);
+        this.proceeding = false;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Player player = (Player) o;
+        return Objects.equals(name, player.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
+    }
+
+    public void lose() {
+        this.proceeding = false;
+        this.betAmount = 0;
+    }
+
+    public void minusBetAmount(int winnersBetAmounts) {
+        this.betAmount -= winnersBetAmounts; // todo betAmount Integer -> int
+    }
+
+    public void plusBetAmount(int losersBetAmounts) {
+        this.betAmount += losersBetAmounts;
     }
 }
