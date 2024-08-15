@@ -8,16 +8,12 @@ public class Players {
 
     private static final Integer BLACKJACK_POINT = 21;
 
-    private List<Player> players;
+    private final List<Player> players;
+    private final Player dealer;
 
-    Players(List<Player> players) {
+    Players(List<Player> players, Player dealer) {
         this.players = new ArrayList<>(players);
-        addDealerStatus();
-    }
-    //todo 딜러를 구분하고 싶은데..
-    private void addDealerStatus() {
-        Player dealer = Player.dealer(new CardDeck(), true);
-        this.players.add(dealer);
+        this.dealer = dealer;
     }
 
     public boolean isAllDone() {

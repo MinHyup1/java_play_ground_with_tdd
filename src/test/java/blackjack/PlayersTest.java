@@ -10,13 +10,14 @@ import org.junit.jupiter.api.Test;
 @DisplayName("Players 단위테스트")
 public class PlayersTest {
 
-    @DisplayName("Players는 Player 목록을 입력하여 생성한다.")
+    @DisplayName("Players는 Player 목록과 딜러를 입력하여 생성한다.")
     @Test
     void players_created_with_player_statuses() {
         Player 참가자1 = Player.participant("참가자1", 10000, new CardDeck(), true);
         Player 참가자2 = Player.participant("참가자2", 20000, new CardDeck(), true);
         Player 참가자3 = Player.participant("참가자3", 30000, new CardDeck(), true);
-        Players players = new Players(List.of(참가자1, 참가자2, 참가자3));
+        Player 딜러 = Player.dealer(new CardDeck(), true);
+        Players players = new Players(List.of(참가자1, 참가자2, 참가자3), 딜러);
 
         assertThat(players).isNotNull();
     }
@@ -26,7 +27,8 @@ public class PlayersTest {
     void players_isDone_return_false_when_even_just_one_players_proceeding_is_true() {
         Player 참가자1 = Player.participant("참가자1", 10000, new CardDeck(), true);
         Player 참가자2 = Player.participant("참가자2", 20000, new CardDeck(), false);
-        Players players = new Players(List.of(참가자1, 참가자2));
+        Player 딜러 = Player.dealer(new CardDeck(), true);
+        Players players = new Players(List.of(참가자1, 참가자2), 딜러);
 
         assertThat(players.isAllDone()).isFalse();
     }
@@ -36,9 +38,10 @@ public class PlayersTest {
     void players_isDone_return_true_when_all_players_proceeding_is_false() {
         Player 참가자1 = Player.participant("참가자1", 10000, new CardDeck(), false);
         Player 참가자2 = Player.participant("참가자2", 20000, new CardDeck(), false);
-        Players players = new Players(List.of(참가자1, 참가자2));
+        Player 딜러 = Player.dealer(new CardDeck(), true);
+        Players players = new Players(List.of(참가자1, 참가자2), 딜러);
 
-        assertThat(players.isAllDone()).isFalse();
+        assertThat(players.isAllDone()).isTrue();
     }
 
     @DisplayName("Players는 블랙잭이 된 플레이어가 존재하는지 확인할 수 있다.")
@@ -47,7 +50,8 @@ public class PlayersTest {
         Player 참가자1 = Player.participant("참가자1", 10000, new CardDeck(), false);
         참가자1.addCard(Card.CLOVER_ACE); // 11
         참가자1.addCard(Card.CLOVER_TEN); // 10
-        Players players = new Players(List.of(참가자1));
+        Player 딜러 = Player.dealer(new CardDeck(), true);
+        Players players = new Players(List.of(참가자1), 딜러);
 
         assertThat(players.anyoneGotBlackjack()).isTrue();
     }
