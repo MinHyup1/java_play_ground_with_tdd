@@ -86,4 +86,14 @@ public class PlayerTest {
 
         assertThat(player.totalCardPoint()).isEqualTo(19);
     }
+
+    @DisplayName("무승부시 참가자는 베팅 금액의 1.5배를 돌려받고 게임 진행을 중단한다.")
+    @Test
+    void name() {
+        Player player = Player.participant("참가자1", 10000, new CardDeck(), true);
+        player.draw();
+
+        Assertions.assertThat(player.getBetAmount()).isEqualTo(15000);
+        Assertions.assertThat(player.isProceeding()).isFalse();
+    }
 }

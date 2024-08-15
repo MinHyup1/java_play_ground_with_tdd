@@ -8,7 +8,7 @@ public class Player {
     private final String name;
     private Integer betAmount;
     private final CardDeck cardDeck;
-    private final boolean proceeding;
+    private boolean proceeding;
 
     private Player(String name, Integer betAmount, CardDeck cardDeck, boolean proceeding) {
         Objects.requireNonNull(name, "name");
@@ -62,5 +62,10 @@ public class Player {
 
     public Integer totalCardPoint() {
         return cardDeck.countUpScore();
+    }
+
+    public void draw() {
+        this.betAmount += (int) Math.round((betAmount * 0.5));
+        this.proceeding = false;
     }
 }
