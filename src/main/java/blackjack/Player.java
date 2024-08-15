@@ -68,4 +68,8 @@ public class Player {
         this.betAmount += (int) Math.round((betAmount * 0.5));
         this.proceeding = false;
     }
+
+    public boolean gotBlackjack() {
+        return cardDeck.isBlackjack();
+    }
 }

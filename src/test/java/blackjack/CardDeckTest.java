@@ -78,4 +78,14 @@ public class CardDeckTest {
             .isInstanceOf(IllegalStateException.class)
             .hasMessage("no cards");
     }
+
+    @DisplayName("CardDeck의 카드 목록 점수 합이 21점이면 블랙잭이다.")
+    @Test
+    void blackjack_test() {
+        CardDeck cardDeck = new CardDeck();
+        cardDeck.addCard(Card.CLOVER_ACE); // 11
+        cardDeck.addCard(Card.CLOVER_TEN); // 10
+
+        assertThat(cardDeck.isBlackjack()).isTrue();
+    }
 }

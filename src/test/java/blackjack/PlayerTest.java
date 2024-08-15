@@ -96,4 +96,14 @@ public class PlayerTest {
         Assertions.assertThat(player.getBetAmount()).isEqualTo(15000);
         Assertions.assertThat(player.isProceeding()).isFalse();
     }
+
+    @DisplayName("플레이어의 카드 점수 합이 21점이면 블랙잭.")
+    @Test
+    void blackjack_test() {
+        Player player = Player.participant("참가자1", 10000, new CardDeck(), true);
+        player.addCard(Card.CLOVER_ACE); // 11
+        player.addCard(Card.CLOVER_TEN); // 10
+
+        assertThat(player.gotBlackjack()).isTrue();
+    }
 }

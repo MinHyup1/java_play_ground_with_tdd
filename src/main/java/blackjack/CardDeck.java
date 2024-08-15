@@ -6,6 +6,7 @@ import java.util.Set;
 
 public class CardDeck {
 
+    private static final Integer BLACKJACK_POINT = 21;
     private final Set<Card> cards;
 
     public CardDeck() {
@@ -36,6 +37,8 @@ public class CardDeck {
         return this.cards.add(card);
     }
 
+
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -45,5 +48,9 @@ public class CardDeck {
 
         sb.delete(sb.lastIndexOf(", "), sb.lastIndexOf(", ") + 1);
         return sb.toString();
+    }
+
+    public boolean isBlackjack() {
+        return countUpScore() == BLACKJACK_POINT;
     }
 }
