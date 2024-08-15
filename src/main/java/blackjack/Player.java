@@ -65,7 +65,6 @@ public class Player {
     }
 
     public void draw() {
-        this.betAmount += (int) Math.round((betAmount * 0.5));
         this.proceeding = false;
     }
 

@@ -40,4 +40,13 @@ public class Players {
         return players.stream()
             .anyMatch(player -> player.totalCardPoint() == BLACKJACK_POINT);
     }
+
+    public void checkDraw() {
+        boolean blackjackPlayerExists = players.stream()
+            .anyMatch(Player::gotBlackjack);
+
+        if (blackjackPlayerExists && dealer.gotBlackjack()) {
+            players.forEach(Player::draw);
+        }
+    }
 }

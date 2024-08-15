@@ -55,4 +55,29 @@ public class PlayersTest {
 
         assertThat(players.anyoneGotBlackjack()).isTrue();
     }
+
+    @DisplayName("플레이어와 딜러가 같이 블랙잭이 되면 무승부가 되며 게임 진행이 중단된다.")
+    @Test
+    void draw_test() {
+        //given
+        Player 참가자1 = Player.participant("참가자1", 10000, new CardDeck(), true);
+        참가자1.addCard(Card.CLOVER_TEN); // 10
+        참가자1.addCard(Card.CLOVER_ACE); // 11
+
+        Player 참가자2 = Player.participant("참가자2", 20000, new CardDeck(), true);
+        참가자1.addCard(Card.CLOVER_TEN); // 10
+        참가자1.addCard(Card.CLOVER_ACE); // 11
+
+        Player 딜러 = Player.dealer(new CardDeck(), true);
+        딜러.addCard(Card.CLOVER_TEN); // 10
+        딜러.addCard(Card.CLOVER_ACE); // 11
+
+        Players players = new Players(List.of(참가자1, 참가자2), 딜러);
+
+        //when
+        players.checkDraw();
+
+        //then
+        assertThat(players.isAllDone()).isTrue();
+    }
 }
