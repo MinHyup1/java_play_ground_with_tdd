@@ -1,8 +1,8 @@
 package black_jack;
 
-import black_jack.constant.user.Dealer;
-import black_jack.constant.user.Player;
-import black_jack.constant.user.Players;
+import black_jack.user.Dealer;
+import black_jack.user.Player;
+import black_jack.user.Players;
 import black_jack.utils.ResultStringUtils;
 
 /**
@@ -12,24 +12,17 @@ public class BlackjackGameManager {
     private Players players;
     private Dealer dealer;
 
-    public BlackjackGameManager(Players players) {
+
+    public BlackjackGameManager(Dealer dealer, Players players) {
         this.players = players;
-        this.dealer = new Dealer();
+        this.dealer = dealer;
     }
 
     public void firstDealing() {
         playersDrawTwice();
-        dealerDrawTwice();
-    }
-
-    private void dealerDrawTwice() {
-        dealer.drawCard(Card.getRandomCard());
-        dealer.drawCard(Card.getRandomCard());
     }
 
     private void playersDrawTwice() {
-        players.allPlayersDrawCard();
-        players.allPlayersDrawCard();
     }
 
     public void getBettingFromPlayer(String playerName, Integer bettingMoney) {
@@ -39,12 +32,8 @@ public class BlackjackGameManager {
 
     public void giveOneCardToPlayer(String playerName) {
         Player player = players.findByName(playerName);
-        player.drawCard(Card.getRandomCard());
     }
 
-    public void giveOneCardToDealer() {
-        dealer.drawCard(Card.getRandomCard());
-    }
 
     public Integer getDealerTotalRank() {
         return dealer.getTotalRank();

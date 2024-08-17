@@ -1,4 +1,4 @@
-package black_jack.constant.user;
+package black_jack.user;
 
 import black_jack.Card;
 import black_jack.utils.ResultStringUtils;
@@ -14,9 +14,6 @@ public class Players {
         this.players = Arrays.asList(players);
     }
 
-    public void allPlayersDrawCard() {
-        players.forEach(player -> player.drawCard(Card.getRandomCard()));
-    }
 
     public Player findByName(String playerName) {
         for (Player player : this.players) {

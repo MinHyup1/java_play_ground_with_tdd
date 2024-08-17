@@ -1,4 +1,4 @@
-package black_jack.constant.user;
+package black_jack.user;
 
 import black_jack.Cards;
 

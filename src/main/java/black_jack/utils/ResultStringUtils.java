@@ -1,6 +1,6 @@
 package black_jack.utils;
 
-import black_jack.constant.user.BlackJackPlayer;
+import black_jack.user.BlackJackPlayer;
 
 public class ResultStringUtils {
     public static String getBlackJackPlayerResultString(BlackJackPlayer player) {

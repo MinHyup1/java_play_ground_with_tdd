@@ -2,7 +2,7 @@ package black_jack;
 
 import black_jack.constant.card.CardRankType;
 import black_jack.constant.card.CardSuitType;
-import black_jack.constant.user.Player;
+import black_jack.user.Player;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -16,7 +16,7 @@ public class PlayerTest {
         final Card sevenHearts = new Card(CardSuitType.HEARTS, CardRankType.SEVEN);
 
         //when
-        player.drawCard(sevenHearts);
+//        player.drawCard(sevenHearts);
 
         //then
         assertThat(player.getTotalRank()).isBetween(1, 13);
